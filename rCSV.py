@@ -15,10 +15,8 @@ def splits(string, delimiters):
   array = []
   word = ""
   for char in string:
-    if char not in delimiters and char != '"':
+    if char not in delimiters:
       word += char
-    elif char == '"':
-      word += ""
     else:
       array += [word]
       word = ""
@@ -145,20 +143,6 @@ def join(array, separateby=";"):
   return word
 
 
-def convertKepemilikan(csvdataline):
-# function : { Menghasilkan array yang tiap elemennya diubah menjadi bentuk array }
-
-# KAMUS LOKAL
-# parameters
-#   csvdataline : array of str
-
-# ALGORITMA
-  csvdataline[0] = discard(csvdataline[0], " ")
-  for i in range (2):
-    csvdataline[i] = splits(csvdataline[i], ",")
-
-  return csvdataline
-
 # todata(): fungsi buat ngubah csv jadi matrix (array of datalines) isinya value dalem csv
 def todata(rawcsv, globaldata, csv_name):
 # Fungsi : Convert csv into datas that can be manipulated
@@ -194,25 +178,17 @@ def todata(rawcsv, globaldata, csv_name):
   header = rawcsv[0]
   tails = dataonly(rawcsv)
 
-  #4.1 Change the number-only string into integer
-  if csv_name == "user" or csv_name == "game" or csv_name == "riwayat":
-    for line in tails:
-      cleanA = convertValue(line, csv_name)
-      globaldata += [cleanA]
+  #4 Change the number-only string into integer
+  for line in tails:
+    clean = convertValue(line, csv_name)
+    globaldata += [clean]
   
-  #4.2 Make The game_id and user_id Value Into Array For Each of Them
-  elif csv_name == "kepemilikan":
-    for line in tails:
-      cleanB = convertKepemilikan(line)
-      globaldata += [cleanB]
-
   return header, globaldata
 
 
 # modif(): modif data csv
 def modif(globaldata, index, col, value):
 # { I.S. globaldata terdefinisi , F.S. value dalam globaldata berubah }
-# Note: TIDAK BERLAKU UNTUK KEPEMILIKAN
 
 # KAMUS LOKAL
   # parameters
@@ -226,7 +202,7 @@ def modif(globaldata, index, col, value):
   return
 
 # save(): menyimpan data ke csv
-def saving(csvheader, globaldata, csv_name):
+def saving(csvheader, globaldata):
 # function : { Menghasilkan string yang berisikan header dan data dalam format csv }
 
 # KAMUS LOKAL
@@ -237,31 +213,15 @@ def saving(csvheader, globaldata, csv_name):
 # variables
   # data2string, line2str, array2str : str
 
-# ALGORITMA  
+# ALGORITMA   
   #1 Make the header into str separated with ";" then add "\n" in the end
   data2string = join(csvheader) + "\n"
 
   #2.1 Changing the number value into str; Changing format into csv; Combine with header
-  if csv_name == "user" or csv_name == "game" or csv_name == "riwayat":
-    for line in globaldata:
-      line2str = [str(elmt) for elmt in line]
-      data2string += join(line2str)
-      data2string += "\n"
-
-  #2.2 Changing tails to csv format and combine them with header
-  elif csv_name == ("kepemilikan"):
-    for line in globaldata:
-      array2str = ""
-      for i in range (2):
-        if i == 0:
-          array2str += '"'
-          array2str += join(line[i], ", ")
-          array2str += '";'
-        elif i == 1:
-          array2str += join(line[i])
-          array2str += "\n"
-
-      data2string += array2str
+  for line in globaldata:
+    line2str = [str(elmt) for elmt in line]
+    data2string += join(line2str)
+    data2string += "\n"
 
   return data2string
 
@@ -271,7 +231,7 @@ def saving(csvheader, globaldata, csv_name):
 # Karena ini bentuknya komentar (#), biar ga ngapusin 1 1 (#)-nya, pake [CTRL+/] di codenya
 
 # 1. AKSES FILE CSV
-# import rCSV as r                            # Buat Bisa Manggil Fuction dalem file (or module) rCSV.py
+# import <NAMA FILE INI> as r                 # Buat Bisa Manggil Fuction dalem file (or module) rCSV.py
 #                                             # How To Manggil: r.<function/procedure>
 #                                             # Ganti <function/procedure> sesuai fungsi/procedure yang pengen digunain
 
@@ -300,7 +260,7 @@ def saving(csvheader, globaldata, csv_name):
 
 
 
-# 1.5 MODIF DATA CSV USER, GAME, ATAU RIWAYAT (TIDAK BERLAKU BUAT KEPEMILIKAN #MAKEITYOURSELF)
+# 1.5 MODIF DATA CSV
 # modif(data, <index>, <col>, <value>)                # Gimana cara kerjanya??? Liat di atas di prosedur modif()
 
 # -----------------
@@ -319,6 +279,6 @@ def saving(csvheader, globaldata, csv_name):
 # print(datastring)
 # ----------------------
 
-# g = open("CSVs/<Nama File>.csv", "w")          # Ini sisanya overwrite isi filenya
+# g = open("CSVs/<Nama File>.csv", "w")               # Ini sisanya overwrite isi filenya
 # g.write(datastring)
 # g.close()
