@@ -2,27 +2,26 @@
 
 def splits(string, delimiters):
 # function : { Menghasilkan array dengan elemen string yang dipisahkan oleh suatu karakter (delimiters) }
-#            { serta menghapus tanda petik dua yang terdapat dalam elemen }
 
 # KAMUS LOKAL
 # parameters
-  # string, delimiters : str
+    # string, delimiters : str
 # variables
-  # array : array of str
-  # word : str
+    # array : array of str
+    # word : str
 
 # ALGORITMA
-  array = []
-  word = ""
-  for char in string:
-    if char not in delimiters:
-      word += char
-    else:
-      array += [word]
-      word = ""
-  array += [word]
+    array = []
+    word = ""
+    for char in string:
+      if char not in delimiters:
+        word += char
+      else:
+        array += [word]
+        word = ""
+    array += [word]
 
-  return array
+    return array
 
 
 def length(array):
@@ -30,9 +29,9 @@ def length(array):
 
 # KAMUS LOKAL
 # parameters
-  # array : array
+    # array : array
 # variables
-  # sum : integer
+    # sum : integer
 
 # ALGORITMA
     sum = 0
@@ -41,50 +40,33 @@ def length(array):
     return sum
 
 
-def copy(array):
-# function : { Menghasilkan salinan dari suatu array }
-
-# KAMUS LOKAL
-# parameters
-  # array : array
-# variables
-  # copy : array
-
-# ALGORITMA
-  copy = []
-  for element in array:
-    copy += [element]
-  
-  return copy
-
-
 def convertValue(csvdata, csvfilename):
 # function : { Mengubah elemen string yang berisikan hanya angka pada array menjadi integer }
 
 # KAMUS LOKAL
 # parameters
-  # csvdata : array of datalines
-  # csvfilename : str
-# variables
-  # duplicate : array of datalines
+    # csvdata : array of datalines
+    # csvfilename : str
 
 # ALGORITMA
-  duplicate = copy(csvdata)
-  
-  for i in range (length(csvdata)):
-    if csvfilename == "user":
-      if (i == 0) or (i == 5):
-        duplicate[i] = int(duplicate[i])
+    for i in range (length(csvdata)):
+      if csvfilename == "user":
+        if (i == 0) or (i == 5):
+          csvdata[i] = int(csvdata[i])
 
-    elif csvfilename == "game":
-      if (i == 3) or (i == 4) or (i == 5):
-        duplicate[i] = int(duplicate[i])
+      elif csvfilename == "game":
+        if (i == 3) or (i == 4) or (i == 5):
+          csvdata[i] = int(csvdata[i])
 
-    elif csvfilename == "riwayat":
-      if (i == 2) or (i == 4):
-        duplicate[i] = int(duplicate[i]) 
-  
-  return duplicate
+      elif csvfilename == "riwayat":
+        if (i == 2) or (i == 4):
+          csvdata[i] = int(csvdata[i]) 
+
+      elif csvfilename == "kepemilikan":
+        if (i == 1):
+          csvdata[i] = int(csvdata[i]) 
+    
+    return csvdata
 
 
 def dataonly(csv):
@@ -92,17 +74,17 @@ def dataonly(csv):
 
 # KAMUS LOKAL
 # parameters
-  # csv : array of datalines
+    # csv : array of datalines
 # variables
-  # data : array of datalines
+    # data : array of datalines
 
 # ALGORITMA
-  data = []
-  
-  for line in range (1, length(csv)):
-    data += [csv[line]]
+    data = []
     
-  return data
+    for line in range (1, length(csv)):
+      data += [csv[line]]
+      
+    return data
 
 
 def discard(string, delimiters):
@@ -110,17 +92,17 @@ def discard(string, delimiters):
 
 # KAMUS LOKAL
 # parameters
-  # string, delimiters : str
+    # string, delimiters : str
 # variables
-  # word : str
+    # word : str
 
 # ALGORITMA
-  word = ""
-  for char in string:
-      if char not in delimiters:
-          word += char
+    word = ""
+    for char in string:
+        if char not in delimiters:
+            word += char
 
-  return word
+    return word
 
 
 def join(array, separateby=";"):
@@ -128,62 +110,64 @@ def join(array, separateby=";"):
 
 # KAMUS LOKAL
 # parameters
-  # array : array
-  # separateby : str
+    # array : array
+    # separateby : str
 # variables
-  # word : str
+    # word : str
 
 # ALGORITMA
-  word = ""
-  for i in range (length(array)):
-    word += array[i]
-    if i != (length(array)-1): 
-      word += separateby
-  
-  return word
+    word = ""
+    for i in range (length(array)):
+      word += array[i]
+      if i != (length(array)-1): 
+        word += separateby
+    
+    return word
 
 
 # todata(): fungsi buat ngubah csv jadi matrix (array of datalines) isinya value dalem csv
-def todata(rawcsv, globaldata, csv_name):
-# Fungsi : Convert csv into datas that can be manipulated
+def todata(rawcsv, globalheader, globaldata, csv_name):
+# { I.S. Data dan Header Terdefinisi; F.S. Data dan Header terisi }
+# procedure : Convert csv into data that can be manipulated
 
 # KAMUS LOKAL
 # parameters
-  # rawcsv : array of str
-  # globaldata : array
-  # csv_name : str
+    # rawcsv : array of str
+    # globalheader : array of str
+    # globaldata : array
+    # csv_name : str
 # variables
-  # counter : int
-  # replaced, cleanA : str
-  # line2array, header : array of str
-  # clean : matrix of str
-  # tails : array of datalines
+    # counter : int
+    # replaced : str
+    # line2array : array of str
+    # clean : array of str
+    # tails : array of datalines
 
 # ALGORITMA
-  #1 Remove The \n in Every Line In The rawcsv (an array)
-  counter = 0
-  for line in rawcsv:
-    replaced = discard(line, "\n")
-    rawcsv[counter] = replaced
-    counter += 1
+    #1 Remove The \n in Every Line In The rawcsv (an array)
+    counter = 0
+    for line in rawcsv:
+      replaced = discard(line, "\n")
+      rawcsv[counter] = replaced
+      counter += 1
 
-  #2 Make An Array for Each Line
-  counter = 0
-  for line in rawcsv:
-    line2array = splits(line, ";")
-    rawcsv[counter] = line2array
-    counter += 1
+    #2 Make An Array for Each Line
+    counter = 0
+    for line in rawcsv:
+      line2array = splits(line, ";")
+      rawcsv[counter] = line2array
+      counter += 1
 
-  #3 Assign The Header and The Data To A New Variable
-  header = rawcsv[0]
-  tails = dataonly(rawcsv)
+    #3 Assign The Header and The Data To A New Variable
+    globalheader += rawcsv[0]
+    tails = dataonly(rawcsv)
 
-  #4 Change the number-only string into integer
-  for line in tails:
-    clean = convertValue(line, csv_name)
-    globaldata += [clean]
-  
-  return header, globaldata
+    #4 Change the number-only string into integer
+    for line in tails:
+      clean = convertValue(line, csv_name)
+      globaldata += [clean]
+    
+    return
 
 
 # modif(): modif data csv
@@ -191,41 +175,133 @@ def modif(globaldata, index, col, value):
 # { I.S. globaldata terdefinisi , F.S. value dalam globaldata berubah }
 
 # KAMUS LOKAL
-  # parameters
-  # globaldata : array
-  # index, col : int
-  # value : free (tergantung csv)
+    # parameters
+    # globaldata : array
+    # index, col : int
+    # value : free (tergantung csv)
 
 # ALGORITMA
-  globaldata[index][col] = value
+    globaldata[index][col] = value
 
-  return
+    return
 
 # save(): menyimpan data ke csv
-def saving(csvheader, globaldata):
+def saving(globalheader, globaldata):
 # function : { Menghasilkan string yang berisikan header dan data dalam format csv }
 
 # KAMUS LOKAL
 # parameters
-  # csvheader : array of str
-  # globaldata : array
-  # csv_name : str
+    # csvheader : array of str
+    # globaldata : array
 # variables
-  # data2string, line2str, array2str : str
+    # data2string, line2str, array2str : str
 
 # ALGORITMA   
-  #1 Make the header into str separated with ";" then add "\n" in the end
-  data2string = join(csvheader) + "\n"
+    #1 Make the header into str separated with ";" then add "\n" in the end
+    data2string = join(globalheader) + "\n"
 
-  #2.1 Changing the number value into str; Changing format into csv; Combine with header
-  for line in globaldata:
-    line2str = [str(elmt) for elmt in line]
-    data2string += join(line2str)
-    data2string += "\n"
+    #2.1 Changing the number value into str; Changing format into csv; Combine with header
+    for line in globaldata:
+      line2str = [str(elmt) for elmt in line] # bikin elemen array menjadi str
+      data2string += join(line2str)
+      data2string += "\n"
 
-  return data2string
+    return data2string
 
-# How To Manggil Di Kode Lu Pada:
+
+def findLongest(game_data):
+# function : Menentukan string terpanjang untuk setiap kolom dalam game_data
+
+# KAMUS LOKAL
+# parameters
+    # game_data : matrix
+# variable
+    # maxlen : array of int
+    # str_data : matrix of str
+    # str_element : array of str
+
+# ALGORITMA
+    maxlen = [7, 9, 16, 11, 5, 4]
+    str_data = []
+    for dataline in game_data:
+        str_element = []
+        for i in range (6):
+            str_element += [str(dataline[i])]
+        str_data += [str_element]
+    
+    for dataline in str_data:
+        for i in range (1,6):
+            if length(dataline[i]) > maxlen[i]:
+                maxlen[i] = length(dataline[i])
+
+    return maxlen
+
+
+def neatList(game_data, stock=True):
+# { I.S. Data/List game terdefinisi; F.S. Data/List game ditampilkan ke layar }
+# procedure: Menampilkan list game ke layar
+
+# KAMUS LOKAL
+# parameters
+    # game_data : matrix
+    # stock : boolean       --> True: Stok diprint; False: Stok tidak diprint
+# variables
+    # header, str_element : array of str
+    # lengtharray : array of int
+    # finish, counter : int
+    # combined, str_data : matrix of str
+    # base, space, div : str
+
+    header = ["ID Game", "Nama Game", "Kategori (Genre)", "Tahun Rilis", "Harga", "Stok"]
+
+    lengtharray = findLongest(game_data)
+
+    if stock:
+      finish = 6
+    else:
+      finish = 5
+
+    str_data = []
+    for dataline in game_data:
+        str_element = []
+        for i in range (finish):
+            str_element += [str(dataline[i])]
+        str_data += [str_element]
+
+    combined = [header]
+    combined += str_data
+
+    
+    counter = 0
+    for datalines in combined:
+        base = "| "
+        for j in range (finish):
+            if length(datalines[j]) == lengtharray[j]:
+                base += datalines[j]
+            elif length(datalines[j]) < lengtharray[j]:
+                base += datalines[j]
+                space = " " * (lengtharray[j] - length(datalines[j]))
+                base += space
+            base += " | "
+        
+        print(base)
+
+        if counter == 0 or counter == (length(combined)-1):
+            if stock:
+              sum = 19
+            else:
+              sum = 16
+            for k in range (finish):
+                sum += lengtharray[k]
+        
+            div = "-" * sum
+            print(div)
+        counter += 1
+
+    return
+
+
+# How To Open CSV File:
 
 # ganti semua <tanda kurung gini> jadi yang kelian pengen
 # Karena ini bentuknya komentar (#), biar ga ngapusin 1 1 (#)-nya, pake [CTRL+/] di codenya
