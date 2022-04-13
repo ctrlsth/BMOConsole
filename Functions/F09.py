@@ -1,4 +1,4 @@
-# F09 - listgame.py
+# F09 - Melihat Game yang dimiliki
 import rCSVkay
 
 userid = "kaykay"
