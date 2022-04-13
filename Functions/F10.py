@@ -1,4 +1,5 @@
-import rCSV_rev2 as r
+# F10 - Mencari Game yang dimiliki dari ID dan tahun rilis
+import rCSV as r
 
 def isFilled(array):
 # function: Menentukan kondisi array antara terisi dan tidak terisi
