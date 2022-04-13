@@ -1,4 +1,4 @@
-# F09
+# F09 - listgame.py
 import rCSVkay
 
 userid = "kaykay"
