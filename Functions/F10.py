@@ -40,7 +40,6 @@ def cariGameInventory(logged_in, datagame, datakep):
 
 
     if isFilled(idgame):
-
         matched = []
         for game in foundgame:
             if game[0] == idgame:
@@ -62,7 +61,6 @@ def cariGameInventory(logged_in, datagame, datakep):
             print("Tidak ada game pada inventory-mu yang memenuhi kriteria")
 
     elif isFilled(year):
-
         year = int(year)
         
         for j in foundgame:
