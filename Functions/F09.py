@@ -1,24 +1,24 @@
 # F09 - Melihat Game yang dimiliki
-import rCSVkay
-
-userid = "kaykay"
+import rCSVk
 
 # UNTUK MEMBACA
-datag = []                                 
+datag = []
+headerg = []
 csv = open("/Users/kayleenchristopher/F09F12/game.csv","r")
 csv_name = "game"
 raw_lines = csv.readlines()
 csv.close()
-clean = rCSVkay.todata(raw_lines, datag, csv_name)
-header = clean[0]
+rCSVk.todata(raw_lines, headerg, datag, csv_name)
+
 
 datakepemilikan = []
+headerkep = []
 kep = open("/Users/kayleenchristopher/F09F12/kepemilikan.csv","r")
 kep_name = "kepemilikan"
 rawk_lines = kep.readlines()
 kep.close()
-cleans = rCSVkay.todata(rawk_lines, datakepemilikan, kep_name)
-heads = cleans[0]
+rCSVk.todata(rawk_lines, headerkep, datakepemilikan, kep_name)
+
 
 # UNTUK FORMAT OUTPUT
 
@@ -26,12 +26,12 @@ csv_name1 = "game"
 csv_name2 = "kepemilikan"
 
 gamedata = []
-res = rCSVkay.todata(raw_lines, gamedata, csv_name1)
-headergame = res[0]
+headergame = []
+rCSVk.todata(raw_lines, headergame, gamedata, csv_name1)
 
 kepdata = []
-res2 = rCSVkay.todata(rawk_lines, kepdata, csv_name2)
-headerkepemilikan = res2[0]
+headerkepemilikan = []
+rCSVk.todata(rawk_lines, headerkepemilikan, kepdata, csv_name2)
 
 betterheader = ["ID Game", "Nama Game", "Kategori (Genre)", "Tahun Rilis", "Harga", "Stok"]
 print()
