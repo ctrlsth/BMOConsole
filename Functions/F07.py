@@ -73,3 +73,4 @@ def listgame(skema, datagame):
             print(i)
     else:
         print("Skema sorting tidak valid")
+    return
