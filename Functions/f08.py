@@ -64,5 +64,6 @@ def buy_game() :
                 # belom tambahin game tersebut ke riwayat tahun dibeli 2022 + kepemilikan
         # kalo misal in_gameid gaada gmn? gaada di spesifikasi
 
+# tulis kode buat modif sama saving disini juga kah? *confusion*
 
 # buy_game() buat ngecek doang
