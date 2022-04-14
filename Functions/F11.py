@@ -25,6 +25,3 @@ def searchGame (datagame):
         for i in list:
             print(i)
             
-array = [['GAME102', 'ITB Crossing', 'Role-playing', '2000' , '100000', '5'], ['GAME067', 'Laprak Rhapsody', 'Survival and horror', '2010' , '60000', '4'], ['GAME127', 'Daigakusei no Seikatsu', 'Real-time Strtegy', '2015' , '75000', '6']]
-
-searchGame(array)
