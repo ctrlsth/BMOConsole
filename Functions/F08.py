@@ -3,16 +3,6 @@
 import rCSV_rev as r
 import f03 as l
 
-# Baca csv
-# user.csv
-# data = []
-# f = open("C:/Users/Alka/user.csv","r")   
-# csv_name = "user"     
-# raw_lines = f.readlines()                   
-# f.close()                                       
-# csvtuple = r.todata(raw_lines, data, csv_name)      
-# header = csvtuple[0]
-
 # kepemilikan.csv
 data2 = []
 f2 = open("C:/Users/Alka/kepemilikan.csv","r")   
@@ -33,12 +23,12 @@ header3 = csvtuple3[0]
 
 # login dulu mungkin? Cara dapet data login kyk gini kah?
 loginValid, loginData = l.login()
-print(loginData)
-id = loginData[0]
-saldo = loginData[5]
+# print(loginData)
 
 # ada if (role == "user") disini mungkin?
 def buy_game() :
+    id = loginData[0]
+    saldo = loginData[5]
     in_gameid = str(input("Masukkan ID Game: "))
 
     for i in data2 :
@@ -57,15 +47,18 @@ def buy_game() :
             # print(harga) buat ngecek doang
             if (saldo < harga) :
                 print("Saldo anda tidak cukup untuk membeli Game tersebut!")
+                break
             elif (stok <= 0) :
                 print("Stok Game tersebut sedang habis!")
+                break
             else :
                 print("Game “",nama_game,"” berhasil dibeli!")  # output di nama_gamenya msh ada spasinya, jadi ga sama persis kyk di spesifikasi
                 saldo = saldo - harga
                 stok -= 1
+                break
                 # belom tambahin game tersebut ke riwayat tahun dibeli 2022 + kepemilikan
         # kalo misal in_gameid gaada gmn? gaada di spesifikasi
 
 # tulis kode buat modif sama saving disini juga kah? *confusion*
 
-# buy_game() buat ngecek doang
+# buy_game() # buat ngecek doang
