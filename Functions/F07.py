@@ -13,7 +13,7 @@ elif skema == 'tahun+' :
     for i in range(x-1):
         for j in range(0,x-i-1):
             if (y[j][3]) > (y[j+1][3]) :
-                y[j], y[j+1] = ye[j+1], y[j]
+                y[j], y[j+1] = y[j+1], y[j]
     for i in y :
         print(i)
 elif skema == 'harga+' :
