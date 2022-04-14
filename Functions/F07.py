@@ -1,3 +1,5 @@
+# F07 - Listing Game di Toko Berdasarkan ID, Tahun Rilis dan Harga
+
 skema = input('Skema sorting: ')
         
 x = length(datagame)
