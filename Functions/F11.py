@@ -16,12 +16,12 @@ def searchGame (datagame):
                         if ((i[4]) == harga11 or harga11 == ''):
                             list += [i]
                             cek += 1
-                            convertValue (datagame, "game")
         
     if cek == 0 :
         print('Tidak ada game pada inventory-mu yang memenuhi kriteria')
     else :
         print('Daftar game pada inventory yang memenuhi kriteria:')
+        convertValue (datagame, "game")
         r.neatList(list, True)
             
     return
