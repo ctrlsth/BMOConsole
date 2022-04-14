@@ -1,3 +1,5 @@
+# F07 - Listing Game di toko
+
 skema = input('Skema sorting: ')
 
 y = copy(datagame)
