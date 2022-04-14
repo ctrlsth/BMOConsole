@@ -22,6 +22,6 @@ def searchGame (datagame):
         print('Tidak ada game pada inventory-mu yang memenuhi kriteria')
     else :
         print('Daftar game pada inventory yang memenuhi kriteria:')
-        neatList(list, stock = True)
+        r.neatList(list, True)
             
     return
