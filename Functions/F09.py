@@ -20,33 +20,33 @@ kep.close()
 rCSVk.todata(rawk_lines, headerkep, datakepemilikan, kep_name)
 
 
-# UNTUK FORMAT OUTPUT
+# # UNTUK FORMAT OUTPUT
 
-csv_name1 = "game"
-csv_name2 = "kepemilikan"
+# csv_name1 = "game"
+# csv_name2 = "kepemilikan"
 
-gamedata = []
-headergame = []
-rCSVk.todata(raw_lines, headergame, gamedata, csv_name1)
+# gamedata = []
+# headergame = []
+# rCSVk.todata(raw_lines, headergame, gamedata, csv_name1)
 
-kepdata = []
-headerkepemilikan = []
-rCSVk.todata(rawk_lines, headerkepemilikan, kepdata, csv_name2)
+# kepdata = []
+# headerkepemilikan = []
+# rCSVk.todata(rawk_lines, headerkepemilikan, kepdata, csv_name2)
 
 betterheader = ["ID Game", "Nama Game", "Kategori (Genre)", "Tahun Rilis", "Harga", "Stok"]
-print()
+# print()
 
 usergame = []
 i = 0
 valid = False
 
-inputuserid = str(input("Silakan input username Anda:"))
+inputuserid = str(input("Silakan input username Anda:")) # Bikin dummy aja jd ga minta input and user_id itu integer
 
 for j in datakepemilikan:
     if(j[1] == inputuserid):
         for x in datag:
             if(x[0] == j[0]):
-                usergame += [[x[0], x[1], x[2], x[3], x[4]]]
+                usergame += [[x[0], x[1], x[2], x[3], x[4]]] # gw rasa langsung kek x aja juga bisa but idk have to tryit
                 valid = True
                 break
             else:
