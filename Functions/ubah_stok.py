@@ -1,3 +1,6 @@
+# F06 - Mengubah Stok Game di Toko
+
+# Tinggal dibikin fungsi aja 👍
 id = input('Masukkan ID: ')
 jumlah = int(input('Masukkan jumlah: '))
 cekid = False
@@ -5,6 +8,7 @@ cekid = False
 for i in datagame:
     if i[0] == id :
         ubahstok = i[5] + jumlah
+        i[5] = ubahstok             # gw tambahin ini
         if ubahstok >= 0 :
             if ubahstok < i[5]:
                 print(f"Stok game {i[1]} berhasil dikurangi. Stok sekarang: {ubahstok}")
