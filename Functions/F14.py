@@ -13,7 +13,9 @@ def help():
                 print("6. search_game_at_store - Untuk mencari game di Toko dari ID, Nama Game, Harga, Kategori, dan Tahun Rilis")
                 print("7. riwayat - Untuk melihat riwayat pembelian game")
                 print("8. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
-            else:
+                print("9. help - memberikan panduan penggunaan sistem")
+                print("10. exit - keluar dari program")
+            else :
                 print("===============help================")
                 print("1. register - Untuk mendaftarkan pengguna baru dengan memasukkan nama, username, dan password")
                 print("2. login - Untuk masuk ke dalam aplikasi dengan memasukkan username dan password")
@@ -24,4 +26,7 @@ def help():
                 print("7. search_game_at_store - Untuk mencari game di Toko dari ID, Nama Game, Harga, Kategori, dan Tahun Rilis")
                 print("8. topup - Untuk menambahkan saldo kepada User")
                 print("9. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
+                print("10. help - memberikan panduan penggunaan sistem")
+                print("11. exit - keluar dari program")
+
 
