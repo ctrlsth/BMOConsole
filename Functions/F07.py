@@ -16,7 +16,7 @@ def copy(array):
   
   return copy
 
-def listgame(skema, datagame):
+def listgame(datagame):
 
     skema = input('Skema sorting: ')
 
@@ -27,29 +27,25 @@ def listgame(skema, datagame):
             for j in range(0,x-i-1):
                 if (y[j][3]) < (y[j+1][3]) :
                     y[j], y[j+1] = y[j+1], y[j]
-        for i in y :
-            print(i)
+        r.neatlist(y, True)
     elif skema == 'tahun+' :
         for i in range(x-1):
             for j in range(0,x-i-1):
                 if (y[j][3]) > (y[j+1][3]) :
                     y[j], y[j+1] = y[j+1], y[j]
-        for i in y :
-            print(i)
+        r.neatlist(y, True)
     elif skema == 'harga+' :
         for i in range(x-1):
             for j in range(0,x-i-1):
                 if (y[j][4]) > (y[j+1][4]) :
                     y[j], y[j+1] = y[j+1], y[j]
-        for i in y :
-            print(i)
+        r.neatlist(y, True)
     elif skema == 'harga-' :  
         for i in range(x-1):
             for j in range(0,x-i-1):
                 if (y[j][4]) < (y[j+1][4]) :
                     y[j], y[j+1] = y[j+1], y[j]
-        for i in y :
-            print(i)
+        r.neatlist(y, True)
     elif skema == '':
         for i in range(x-1):
             for j in range(0,x-i-1):
@@ -69,8 +65,8 @@ def listgame(skema, datagame):
                             y[j], y[j+1] = y[j+1], y[j]
                         else:
                             y[j], y[j+1] = y[j], y[j+1]
-        for i in y :
-            print(i)
+        r.neatlist(y, True)
     else:
         print("Skema sorting tidak valid")
+        
     return
