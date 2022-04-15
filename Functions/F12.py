@@ -1,13 +1,12 @@
-# F12 - Top Up Saldo 
-import rCSVkay
+import rCSVk
 
-datau = []                                 
+datau = []
+headeru = []
 use = open("/Users/kayleenchristopher/F09F12/user.csv","r")
 use_name = "user"
 rawu_lines = use.readlines()
 use.close()
-cleanes = rCSVkay.todata(rawu_lines, datau, use_name)
-headers = cleanes[0]
+cleanes = rCSVk.todata(rawu_lines, headeru, datau, use_name)
 
 inputuser = str(input("Masukan username: "))
 topupsaldo = int(input("Masukan saldo: "))
@@ -34,7 +33,4 @@ else:
     else:
         print("Top up berhasil. Saldo", name, "bertambah menjadi", saldoakhir,".")
 
-
-# To do for F12 : Baca file user.csv, tampung semua data di array, check user yang mana yang mau top up saldo, baca saldo,
-#tambahin saldo ke array, tulis lagi semuanya ke csv
 # Question : Apakah harus ulang input lagi kalau salah input username?
