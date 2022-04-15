@@ -3,7 +3,7 @@ def searchGame (datagame):
     name11 = input('Masukkan Nama Game: ')
     kategori11 = input('Masukkan Kategori Game: ')
     tahun11 = (input('Masukkan Tahun Rilis Game: '))
-    harga11 =(input('Masukkan Harga Game: '))
+    harga11 = (input('Masukkan Harga Game: '))
     cek = 0
     list= []
 
@@ -21,7 +21,6 @@ def searchGame (datagame):
         print('Tidak ada game pada inventory-mu yang memenuhi kriteria')
     else :
         print('Daftar game pada inventory yang memenuhi kriteria:')
-        convertValue (datagame, "game")
-        r.neatList(list, True)
+        r.neatList(list,True)
             
     return
