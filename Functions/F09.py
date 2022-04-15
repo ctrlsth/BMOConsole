@@ -38,29 +38,32 @@ usergame = []
 i = 0
 valid = False
 
-inputuserid = str(input("Silakan input username Anda: "))
+#inputuserid = str(input("Silakan input user id Anda: "))
 
-for k in datauser:
-    if(k[1] == inputuserid):
-        userid = k[0]
-        valid = True
-        break
+# for k in datauser:
+#     if(k[1] == inputuserid):
+#         userid = k[0]
+#         valid = True
+#         break
+# if not valid:
+#     print("Username tidak ditemukan.")
+# else:
+
+# Dummy :
+userid = 1
+
+for j in datakepemilikan:
+    if(j[1] == userid):
+        for x in datag:
+            if(x[0] == j[0]):
+                usergame += [[x[0], x[1], x[2], x[3], x[4], x[5]]]
+                valid = True
+                break
+            else:
+                valid = False
 if not valid:
-    print("Username tidak ditemukan.")
+    print("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli.")
 else:
-    for j in datakepemilikan:
-        if(j[1] == userid):
-            for x in datag:
-                if(x[0] == j[0]):
-                    usergame += [[x[0], x[1], x[2], x[3], x[4], x[5]]]
-                    valid = True
-                    break
-                else:
-                    valid = False
-    if not valid:
-        print("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli.")
-    else:
-        print("Daftar game : ")
-        wordlength = rCSVk.findLongest(usergame)
-        rCSVk.neatList(usergame, False)
-# Question : Apakah harus ulang input lagi kalau salah input username?
+    print("Daftar game : ")
+    wordlength = rCSVk.findLongest(usergame)
+    rCSVk.neatList(usergame, False)
