@@ -20,41 +20,47 @@ kep.close()
 rCSVk.todata(rawk_lines, headerkep, datakepemilikan, kep_name)
 
 
-# # UNTUK FORMAT OUTPUT
+datauser = []
+headeruser = []
+use = open("/Users/kayleenchristopher/F09F12/user.csv","r")
+use_name = "user"
+rawu_lines = use.readlines()
+use.close()
+rCSVk.todata(rawu_lines, headeruser, datauser, use_name)
 
-# csv_name1 = "game"
-# csv_name2 = "kepemilikan"
 
-# gamedata = []
-# headergame = []
-# rCSVk.todata(raw_lines, headergame, gamedata, csv_name1)
-
-# kepdata = []
-# headerkepemilikan = []
-# rCSVk.todata(rawk_lines, headerkepemilikan, kepdata, csv_name2)
+# UNTUK FORMAT OUTPUT
 
 betterheader = ["ID Game", "Nama Game", "Kategori (Genre)", "Tahun Rilis", "Harga", "Stok"]
-# print()
+print()
 
 usergame = []
 i = 0
 valid = False
 
-inputuserid = str(input("Silakan input username Anda:")) # Bikin dummy aja jd ga minta input and user_id itu integer
+inputuserid = str(input("Silakan input username Anda: "))
 
-for j in datakepemilikan:
-    if(j[1] == inputuserid):
-        for x in datag:
-            if(x[0] == j[0]):
-                usergame += [[x[0], x[1], x[2], x[3], x[4]]] # gw rasa langsung kek x aja juga bisa but idk have to tryit
-                valid = True
-                break
-            else:
-                valid = False
+for k in datauser:
+    if(k[1] == inputuserid):
+        userid = k[0]
+        valid = True
+        break
 if not valid:
-    print("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli.")
+    print("Username tidak ditemukan.")
 else:
-    print("Daftar game : ")
-    wordlength = rCSVkay.findLongest(usergame)
-    rCSVkay.neatList(betterheader, usergame, wordlength)
+    for j in datakepemilikan:
+        if(j[1] == userid):
+            for x in datag:
+                if(x[0] == j[0]):
+                    usergame += [[x[0], x[1], x[2], x[3], x[4], x[5]]]
+                    valid = True
+                    break
+                else:
+                    valid = False
+    if not valid:
+        print("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli.")
+    else:
+        print("Daftar game : ")
+        wordlength = rCSVk.findLongest(usergame)
+        rCSVk.neatList(usergame, False)
 # Question : Apakah harus ulang input lagi kalau salah input username?
