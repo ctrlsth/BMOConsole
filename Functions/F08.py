@@ -39,11 +39,12 @@ def buy_game() :
     in_gameid = str(input("Masukkan ID Game: "))
     new_riw = []
     new_kep = []
+    owned = False
     
 
-    for i in data :
-        if (loginData[1] == i[3]) :
-            new_riw += [i]
+#     for i in data :
+#         if (loginData[1] == i[3]) :
+#             new_riw += [i]
 
     for j in data2 :
         if (int(loginData[0]) == int(j[1])) :
@@ -51,21 +52,22 @@ def buy_game() :
     for j in new_kep :                    
         if (in_gameid == j[0]) :
             print("Anda sudah memiliki Game tersebut!")
-            break
-
-    for k in data3 :
-        if ((in_gameid) == (k[0])) :
-            new_game = k
-    if (loginData[5] < new_game[4]) :
-        print("Saldo anda tidak cukup untuk membeli Game tersebut!")
-    elif (new_game[5] <= 0) :
-        print("Stok Game tersebut sedang habis!")
-    else :
-        loginData[5] -= new_game[4] # ngurangin saldo
-        new_riw += [[in_gameid, loginData[2], new_game[4], loginData[1], 2022]] # nambahin riwayat game
-        new_kep += [[in_gameid, loginData[0]]] # nambahin kepemilikan game
-        new_game[5] -= 1 # ngurangin stok game
-        print("Game “" + new_game[1] + "” berhasil dibeli!")
+            owned = True # ga harus break kan ya soalnya gamungkin punya game yg sama
+            
+    if not (owned) :
+        for k in data3 :
+            if ((in_gameid) == (k[0])) :
+                new_game = k
+        if (loginData[5] < new_game[4]) :
+            print("Saldo anda tidak cukup untuk membeli Game tersebut!")
+        elif (new_game[5] <= 0) :
+            print("Stok Game tersebut sedang habis!")
+        else :
+            loginData[5] -= new_game[4] # ngurangin saldo
+            new_riw += [[in_gameid, loginData[2], new_game[4], loginData[1], 2022]] # nambahin riwayat game
+            new_kep += [[in_gameid, loginData[0]]] # nambahin kepemilikan game
+            new_game[5] -= 1 # ngurangin stok game
+            print("Game “" + new_game[1] + "” berhasil dibeli!")
     # print(loginData) 
     # print(new_riw)
     # print(new_kep)
