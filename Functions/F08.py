@@ -1,73 +1,107 @@
-# F08 - Membeli Game
+# import DummyLoad as l
 
-import rCSV as r
-import f03 as l
+# # Inisiasi
+# headergame = []
+# datagame = []
+# l.game(headergame, datagame)
 
-# riwayat.csv
-header = []
-data = []
-f = open("C:/Users/Alka/riwayat.csv","r")   
-csv_name = "riwayat"     
-raw_lines = f.readlines()                   
-f.close()                                       
-csvtuple = r.todata(raw_lines, header, data, csv_name)      
+# headerhis = []
+# datahis = []
+# l.riwayat(headerhis, datahis)
 
-# kepemilikan.csv
-header2 = []
-data2 = []
-f2 = open("C:/Users/Alka/kepemilikan.csv","r")   
-csv_name2 = "kepemilikan"     
-raw_lines2 = f2.readlines()                   
-f2.close()                                       
-csvtuple2 = r.todata(raw_lines2, header2, data2, csv_name2)     
+# headerkep = []
+# datakep = []
+# l.kepemilikan(headerkep, datakep)
 
-# game.csv
-header3 = []
-data3 = []
-f3 = open("C:/Users/Alka/game.csv","r")   
-csv_name3 = "game"     
-raw_lines3 = f3.readlines()                   
-f3.close()                                       
-csvtuple3 = r.todata(raw_lines3, header3, data3, csv_name3)
+# headeruser = []
+# datauser = []
+# l.user(headeruser, datauser)
 
-# login dulu mungkin? Cara dapet data login kyk gini kah?
-loginValid, loginData = l.login()
-# print(loginData)
+# loginData = [2, "hanhan","Hans", "snah", "user", 20000]
 
-# ada if (role == "user") disini mungkin?
-def buy_game() :
-    in_gameid = str(input("Masukkan ID Game: "))
+# Prosedur
+def buy_game(datauser, datagame, datahis, datakep, loginData) :
+    
+    in_gameid = input("Masukkan ID Game: ")
     new_riw = []
     new_kep = []
+    new_game = []
     owned = False
+    found = False
+
+    for i in datagame:
+        if i[0] == in_gameid:
+            found = True
+            break
+
+    if found:
+        for j in datakep :
+            if (j[1] == loginData[0]) and (in_gameid == j[0]):
+                print("Anda sudah memiliki Game tersebut!")
+                print()
+                owned = True
+                break
+
+        if not owned :
+        
+                for k in datagame :
+                    if (in_gameid == k[0]) :
+                        new_game += k
+
+                if (new_game[5] <= 0) :
+                    print("Stok Game tersebut sedang habis!")
+                elif (loginData[5] < new_game[4]) :
+                    print("Saldo anda tidak cukup untuk membeli Game tersebut!")
+                else :
+                    loginData[5] -= new_game[4] # ngurangin saldo
+                    for l in datauser:
+                        if l[0] == loginData[0]:
+                            l[5] = loginData[5]
+
+                    new_riw += [[in_gameid, loginData[2], new_game[4], loginData[0], 2022]] # nambahin riwayat game
+                    datahis += new_riw
+
+                    new_kep += [[in_gameid, loginData[0]]] # nambahin kepemilikan game
+                    datakep += new_kep
+
+                    new_game[5] -= 1 # ngurangin stok game
+                    for m in datagame:
+                        if m[0] == in_gameid:
+                            m[5] = new_game[5]
+
+                    print("Game “" + new_game[1] + "” berhasil dibeli!")
+                    print()
+
+    else:
+        print("ID Game tidak ditemukan!")
+        print()
     
+    return 
 
-#     for i in data :
-#         if (loginData[1] == i[3]) :
-#             new_riw += [i]
+# Loop Test Case
+# loop = True
+# while loop:
+#     A = int(input("loop : "))
+#     if A == 1:
+#         buy_game(datauser, datagame, datahis, datakep, loginData)
+#         for data in datahis:
+#             if data[3] == 2:
+#                 print(data)
+#         print()
+#         for datas in datakep:
+#             if datas[1] == 2:
+#                 print(datas)
+#         print()
+#         for datass in datauser:
+#             if datass[0] == 2:
+#                 print(datass)
+#         print()
+#         print("Login Data:")
+#         print(loginData)
+#         print()
+#     else:
+#         loop = False
 
-    for j in data2 :
-        if (int(loginData[0]) == int(j[1])) :
-            new_kep += [j]
-    for j in new_kep :                    
-        if (in_gameid == j[0]) :
-            print("Anda sudah memiliki Game tersebut!")
-            owned = True # ga harus break kan ya soalnya gamungkin punya game yg sama
-            
-    if not (owned) :
-        for k in data3 :
-            if ((in_gameid) == (k[0])) :
-                new_game = k
-        if (loginData[5] < new_game[4]) :
-            print("Saldo anda tidak cukup untuk membeli Game tersebut!")
-        elif (new_game[5] <= 0) :
-            print("Stok Game tersebut sedang habis!")
-        else :
-            loginData[5] -= new_game[4] # ngurangin saldo
-            new_riw += [[in_gameid, loginData[2], new_game[4], loginData[1], 2022]] # nambahin riwayat game
-            new_kep += [[in_gameid, loginData[0]]] # nambahin kepemilikan game
-            new_game[5] -= 1 # ngurangin stok game
-            print("Game “" + new_game[1] + "” berhasil dibeli!")
     # print(loginData) 
     # print(new_riw)
     # print(new_kep)
