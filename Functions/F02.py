@@ -1,10 +1,17 @@
 # F02 - Register
+
 import os; import sys; import math; import time; import argparse; import datetime ; import rCSV as r
 
 
 #-----------------------F02--------------------------------
-
-
+def validasi_username(username):
+    valid = True
+    for letter in username:
+        if letter not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_":
+            valid = False
+            break
+    return valid
+    
 def register(): 
     #Menambahkan data user ke dalam database
     #I.S. data user terdefinisi
@@ -14,15 +21,21 @@ def register():
     #Variabel Global
     global user
     #KAMUS lOKAL
+    #name,username,password : str
+    #notUnik : boolean 
     
     #ALGORITMA
     name = input("Masukkan nama: ")
     username = input("Masukkan username: ")
+    while not validasi_username(username):
+            print("Username anda tidak valid, silahkan coba lagi")
+            username = input("Masukkan username: ")
     password = input("Masukkan password: ")
 
     notUnik = True
     while notUnik:
         notUnik = False
+    
 
         for i in range(r.length(user)):
             if user[i][1] == username:
