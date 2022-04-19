@@ -2,49 +2,30 @@ def exit():
     # Keluar dari program
     # I.S. program sedang berjalan
     # F.S. program ditutup dan selesai
-
-    # KAMUS LOKAL
-    # save_ans : string
-
-    # global variable
-    global program
-    # Function / Procedure
-    # cekYN(jawaban : string) -> boolean
-    # Mengecek input dari user lalu memberi koreksi, harus 'Y' atau 'N'
-    # I.S. string terdefinisi
-    # F.S. Input harus berlaku untuk Y atau N dalam huruf kecil maupun besar.
-
-    # save()
-    # Menyimpan data ke dalam file di folder yang diinputkan
-    # I.S. user, game, riwayat, kepemilikan terdefinisi
-    # F.S. user, game, riwayat, kepemilikan tersimpan
     
-    # ALGORITMA
-    if login:
-        save_ans = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
-        while not cekYN(save_ans):
-            save_ans = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
-        if save_ans == "Y":
-            save()
-    print()
-    # Program berhenti
-    program = False
-
-def cekYN(string):
-    # Mengecek input dari user lalu memberi koreksi, harus 'Y' atau 'N'
-    # input -> string : string
-    # output -> boolean
-    
-    # I.S. string terdefinisi
-    # F.S. Input harus berlaku untuk Y atau N dalam huruf kecil maupun besar.
-
-    # KAMUS LOKAL
-    
-    # ALGORITMA
-    if (string == 'Y') or (string == 'N') or (string == 'y') or (string == 'n'):
-        return True
+    out = input("Apakah anda ingin keluar dari program? (y/n)")
+    if out == 'y' or out =='Y':                                                                    
+        b=input("Apakah anda ingin melakukan penyimpanan file yang sudah diubah? (y/n)")
+        if b == 'y' or b == 'Y':                                                                     
+            save()                                                                        
+            print("Menutup program...")                                                          
+            time.sleep(1.5)
+        elif b == 'n' or b == 'N':
+            print("Menutup program")
+            time.sleep(1.5)
+        else:
+            print("Masukan tidak valid! (Y/N/y/n)")
+            exit()
+        
+        time.sleep(3)
+        os.system('cls')
+        sys.exit()
+    elif out == 'n' or out == 'N':
+        if role == 'admin':
+            menu_admin()
+        else:
+            menu_user()
     else:
-        print("Input harus berlaku untuk Y atau N dalam huruf kecil maupun besar. ")
-        print()
-        return False
+        print("Tidak dapat keluar dari program, masukan tidak valid")                
+        exit()
 
