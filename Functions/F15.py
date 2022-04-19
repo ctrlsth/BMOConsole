@@ -11,40 +11,58 @@ parser.add_argument("-f","--folder", type=str, help="Input harus menyertakan fol
 args = parser.parse_args()
 
 def load() :
+    # Membaca file csv dan mengembalikan matriks data sesuai data csv
+    # I.S. file terdefinisi
+    # F.S. dikembalikan matriks data sesuai file
+
+    # KAMUS LOKAL
+    # f : SEQFILE OF
+    #       (*) raw_lines : array of string
+    #csv_name : str
+    
+    
+    #variabel global
     global user 
     global game
     global riwayat
     global kepemilikan
 
-
+    #ALGORITMA
     if not os.path.exists(args.folder): 
         print(f'Folder "{args.folder}" tidak ditemukan')
     else:
         with open(args.folder + "\\user.csv", "r") as f: 
-            raw_lines = f.readlines()
-            f.close()
-            csv_name = "user"
-            res = r.todata(raw_lines, user , csv_name)
-            header = res[0]
+            header = []
+            data = []
+            csv_name = "user"     
+            raw_lines = f.readlines()                   
+            f.close()                                       
+            csvtuple = r.todata(raw_lines, header, data, csv_name)      
+            header = []
         with open(args.folder + "\\game.csv", "r") as f: 
-            raw_lines = f.readlines()
-            f.close()
-            csv_name = "game"
-            res = r.todata(raw_lines, game , csv_name)
-            header = res[0]
+            header = []
+            data = []
+            csv_name = "game"     
+            raw_lines = f.readlines()                   
+            f.close()                                       
+            csvtuple = r.todata(raw_lines, header, data, csv_name)      
+            header = []
         with open(args.folder + "\\riwayat.csv", "r") as f: 
-            raw_lines = f.readlines()
-            f.close()
-            csv_name = "riwayat"
-            res = r.todata(raw_lines, riwayat , csv_name)
-            header = res[0]
+            header = []
+            data = []
+            csv_name = "riwayat"     
+            raw_lines = f.readlines()                   
+            f.close()                                       
+            csvtuple = r.todata(raw_lines, header, data, csv_name)      
+            header = []
         with open(args.folder + "\\kepemilikan.csv", "r") as f: 
-            raw_lines = f.readlines()
-            f.close()
-            csv_name = "kepemilikian"
-            res = r.todata(raw_lines, kepemilikan , csv_name)
-            header = res[0]
-
+            header = []
+            data = []
+            csv_name = "kepemilikan"     
+            raw_lines = f.readlines()                   
+            f.close()                                       
+            csvtuple = r.todata(raw_lines, header, data, csv_name)      
+            header = []
         time.sleep(1)
         print("Loading...")
         time.sleep(2)
@@ -63,8 +81,6 @@ def load() :
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
         ''')
 
 load()
-
