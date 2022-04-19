@@ -26,6 +26,6 @@ def exit():
         else:
             menu_user()
     else:
-        print("Tidak dapat keluar dari program, masukan tidak valid")                
+        print("Masukan tidak valid! (Y/N/y/n)")               
         exit()
 
