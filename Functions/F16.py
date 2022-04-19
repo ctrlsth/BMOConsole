@@ -23,17 +23,18 @@ def save():
     for (root,dirs,files) in os.walk(folder, topdown=False):
         for f in files :
             os.remove(f'{folder}\\{f}')
-    with open(folder + "\\user.csv", "w+") as f:
-        f.write(konversi(user) + '\n')
-    with open(folder + "\\game.csv", "w+") as f:
-        f.write(konversi(game) + '\n')
-    with open(folder + "\\riwayat.csv", "w+") as f:
-        f.write(konversi(riwayat) + '\n')
-    with open(folder + "\\kepemilikan.csv", "w+") as f:
-        f.write(konversi(kepemilikan) + '\n')
+    with open(folder + "\\user.csv", "w+") as g:
+        g.write(konversi(user) + '\n')
+    with open(folder + "\\game.csv", "w+") as g:
+        g.write(konversi(game) + '\n')
+    with open(folder + "\\riwayat.csv", "w+") as g:
+        g.write(konversi(riwayat) + '\n')
+    with open(folder + "\\kepemilikan.csv", "w+") as g:
+        g.write(konversi(kepemilikan) + '\n')
     print('Saving...')
     time.sleep(2)
     print("Data telah disimpan pada folder {folder}!".format(folder))
+
 
 
 
