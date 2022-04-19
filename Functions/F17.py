@@ -17,7 +17,8 @@ def exit():
     # save()
     # Menyimpan data ke dalam file di folder yang diinputkan
     # I.S. user, game, riwayat, kepemilikan terdefinisi
-    # F.S. file user, gadget, consumable, gadget_borrow_history, gadget_return_history, consumable_history, inventory_user tersimpan
+    # F.S. user, game, riwayat, kepemilikan tersimpan
+    
     # ALGORITMA
     if login:
         save_ans = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
