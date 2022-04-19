@@ -1,6 +1,13 @@
 # F14 - Help
 def help():
+     # Menampilkan keyword-keyword yang tersedia ke layar
+    
+    # I.S. sembarang
+    # F.S. tercetak list keyword ke layar
+    
+    # KAMUS LOKAL
 
+    # ALGORITMA
     if role == 'user':
         print("===============help================")
         print("1. login - Untuk melakukan login ke dalam sistem")
@@ -26,5 +33,4 @@ def help():
         print("9. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
         print("10. help - memberikan panduan penggunaan sistem")
         print("11. exit - keluar dari program")
-
 
