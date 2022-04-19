@@ -6,7 +6,7 @@ import os; import sys; import math; import time; import argparse; import datetim
 #-----------------------F02--------------------------------
 def validasi_username(username):
     valid = True
-    for i in range (len(username)) :
+    for i in range (r.length(username)) :
         if ((ord(username[i])==45) or (ord(username[i])==95) or (65<=ord(username[i])<=90) or (97<=ord(username[i])<=122) or (48<=ord(username[i])<=57)):
             valid = True
         else :
