@@ -1,6 +1,7 @@
+
 def tictactoe():
     print('''
-:+                                           
+     :+                                           
 *%                                           
  %%                                          
  *%%                                         
@@ -39,7 +40,7 @@ def tictactoe():
                + %%%%@       %%*%%@%%%%@     
                =  .          %% @%%%%.  +    
                :                             
-                                                     
+                                                                              
     ''')
     board = [["#", "#", "#"],
          ["#", "#", "#"],
@@ -54,7 +55,7 @@ def tictactoe():
         horizon1 = int(input())
         vertikal1 = int(input())
 
-        while (horizon1 > 3 or vertikal1 > 3):
+        while not(1<=horizon1<= 3 and 1<=vertikal1 <= 3):
             print("Inputan baris dan kolom salah")
             horizon1 = int(input())
             vertikal1 = int(input())
@@ -64,7 +65,7 @@ def tictactoe():
             horizon1 = int(input())
             vertikal1 = int(input())
             if horizon1 > 3 or vertikal1 > 3:
-                while (horizon1 > 3 or vertikal1 > 3):
+                while not(1<=horizon1<= 3 and 1<=vertikal1 <= 3):
                     print("Inputan baris dan kolom salah")
                     horizon1 = int(input())
                     vertikal1 = int(input())
@@ -136,7 +137,7 @@ def tictactoe():
         horizon2 = int(input())
         vertikal2 = int(input())
 
-        while horizon2 > 3 or vertikal2 > 3:
+        while not(1<=horizon2<= 3 and 1<=vertikal2 <= 3):
             print("Inputan baris dan kolom salah")
             horizon2 = int(input())
             vertikal2 = int(input())
@@ -146,7 +147,7 @@ def tictactoe():
             horizon2 = int(input())
             vertikal2 = int(input())
             if horizon2 > 3 or vertikal2 > 3:
-                while (horizon2 > 3 or vertikal2 > 3):
+                while not(1<= horizon2 <= 3 and 1<= vertikal2 <= 3):
                     print("Inputan baris dan kolom salah")
                     horizon2 = int(input())
                     vertikal2 = int(input())
