@@ -1,10 +1,10 @@
 # B02 - Magic Conch Shell
-import time
+import time ; from rCSV import *
 
 def kerangajaib():
     t = time.time()
     question = input("Apa pertanyaanmu? ")
-    magicshell = int(str(t-int(t))[2:])%7
+    magicshell = int(slicing(2, str(t-int(t))))%7
 
     if magicshell == 0:
         print("Iya.")
@@ -17,8 +17,15 @@ def kerangajaib():
     elif magicshell == 4:
         print("Tidak mungkin")
     elif magicshell == 5:
-        print("Tentu.")
+        print("Pasti.")
     else:
         print("YO NDA TAU")
+
+def slicing(int, string):
+    kata = ''
+    for i in range(length(string)):
+        if i >= int:
+            kata += string[i]
+    return kata
 
 kerangajaib()
