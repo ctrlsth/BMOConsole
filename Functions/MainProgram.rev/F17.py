@@ -1,5 +1,5 @@
    
-ef exit():
+def exit():
     # Keluar dari program
     # I.S. program sedang berjalan
     # F.S. program ditutup dan selesai
