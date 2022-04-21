@@ -1,3 +1,4 @@
+
 def exit():
     # Keluar dari program
     # I.S. program sedang berjalan
@@ -21,10 +22,7 @@ def exit():
         os.system('cls')
         sys.exit()
     elif out == 'n' or out == 'N':
-        if role == 'admin':
-            menu_admin()
-        else:
-            menu_user()
+        mainloop()
     else:
         print("Masukan tidak valid! (Y/N/y/n)")               
         exit()
