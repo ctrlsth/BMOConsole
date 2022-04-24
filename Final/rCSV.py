@@ -13,12 +13,17 @@ def splits(string, delimiters):
 # ALGORITMA
     array = []
     word = ""
+
     for char in string: 
+    # jika tidak ditemukan karakter delimiters pada string maka tiap karakter dalam string akan ditambahkan dalam word
       if char != delimiters:
         word += char
+
+    # jika ditemukan karakter delimiters pada string, maka word akan dimaukkan dalam array
       else:
         array += [word]
         word = ""
+    
     array += [word]
 
     return array
@@ -34,7 +39,7 @@ def length(array):
     # sum : integer
 
 # ALGORITMA
-    sum = 0
+    sum = 0                 # menyimpan panjang dari array
     for i in array:
         sum += 1
     return sum
@@ -50,7 +55,7 @@ def copy(array):
     # copy : array
 
 # ALGORITMA
-    copy = []
+    copy = []               # inisialisasi copy
     for element in array:
         copy += [element]
   
@@ -98,6 +103,7 @@ def dataonly(csv):
 # ALGORITMA
     data = []
     
+    # indeks 0 menyimpan header, sehingga tidak di akses
     for line in range (1, length(csv)):
       data += [csv[line]]
       
@@ -183,7 +189,7 @@ def todata(rawcsv, globalheader, globaldata, csv_name):
     for line in tails:
       clean = convertValue(line, csv_name)
       globaldata += [clean]
-    
+
     return
 
 
@@ -208,16 +214,16 @@ def saving(globalheader, globaldata):
 
 # KAMUS LOKAL
 # parameters
-    # csvheader : array of str
+    # globalheader : array of str
     # globaldata : array
 # variables
-    # data2string, line2str, array2str : str
+    # data2string, line2str : str
 
 # ALGORITMA   
     #1 Make the header into str separated with ";" then add "\n" in the end
     data2string = join(globalheader) + "\n"
 
-    #2.1 Changing the number value into str; Changing format into csv; Combine with header
+    #2 Changing the number value into str; Changing format into csv; Combine with header
     for line in globaldata:
       line2str = [] # bikin elemen array menjadi str
       for i in range (length(line)):
@@ -233,23 +239,31 @@ def findLongest(data, his=False):
 
 # KAMUS LOKAL
 # parameters
-    # game_data : matrix
+    # data : array
+    # his : bool
 # variable
-    # maxlen : array of int
+    # maxlen, maxleng, maxlenh : array of int
     # str_data : matrix of str
     # str_element : array of str
+    # finish : int
 
 # ALGORITMA
+    # maxleng = panjang dari tiap elemen dalam headergame di neatList
     maxleng = [7, 9, 16, 11, 5, 4]
+    # maxleng = panjang dari tiap elemen dalam headerhis di neatList
     maxlenh = [7, 9, 5, 10]
 
+    # jika yang di print riwayat:
     if not his:
         finish = 6
         maxlen = maxleng
+
+    # jika yand gi print game:
     else:
         finish = 4
         maxlen = maxlenh
 
+    # Mengubah value data menjadi str
     str_data = []
     for dataline in data:
         str_element = []
@@ -257,6 +271,7 @@ def findLongest(data, his=False):
             str_element += [str(dataline[i])]
         str_data += [str_element]
     
+    # Mencari string terpanjang untuk setiap kolom dan menyimpannya dalam maxlen
     for dataline in str_data:
         for i in range (1,finish):
             if length(dataline[i]) > maxlen[i]:
@@ -266,22 +281,40 @@ def findLongest(data, his=False):
 
 
 def listDiv(lengtharray, finish, his, stock, title=True):
+# procedure : Mencetak judul ataupun pembatas pada layar
 
+# KAMUS LOKAL
+# parameters
+    # lengtharray : array
+    # finish : int
+    # his, stock, title : bool
+# variable
+    # sum, lentitle : int
+    # titlelist, div : str
+
+# ALGORITMA
+    # Jika data yang dimanipulasikan game
     if not his:
         titlelist = " DAFTAR GAME "
         lentitle = 13
+
+        # jika ingin mencetak kolom stok
         if stock:
-            sum = 19
+            sum = 19                # sum menyimpan data panjang tabel
         else:
             sum = 16
+
+    # jika data yang dimanipulasikan riwayat
     else:
         titlelist = " RIWAYAT "
         lentitle = 9
         sum = 13
 
+    # menambahkan panjang array
     for k in range (finish):
         sum += lengtharray[k]
 
+    # jika ingin mencetak judul
     if title:
         sum -= lentitle
 
@@ -291,6 +324,7 @@ def listDiv(lengtharray, finish, his, stock, title=True):
         div = "=" * (sum - (sum // 2))
         print(div)
 
+    # jika hanya ingin mencetak pembatas
     else:
         div = "-" * sum
         print(div)
@@ -307,7 +341,7 @@ def neatList(data, stock=True, his=False):
     # game_data : matrix
     # stock : boolean
 # variables
-    # header, str_element : array of str
+    # header, headerhis, headergame, str_element : array of str
     # lengtharray : array of int
     # finish, counter : int
     # combined, str_data : matrix of str
@@ -316,18 +350,24 @@ def neatList(data, stock=True, his=False):
     headergame = ["ID Game", "Nama Game", "Kategori (Genre)", "Tahun Rilis", "Harga", "Stok"]
     headerhis = ["ID Game", "Nama Game", "Harga", "Tahun Beli"]
 
+    # jika ingin mencetak data berdasarkan datagame
     if not his:
         lengtharray = findLongest(data)
         header = headergame
+
+        # jika ingin mencetak kolom stok
         if stock:
-            finish = 6
+            finish = 6                      # finisih menyimpan banyak kolom yang akan dicetak
         else:
             finish = 5
+    
+    # jika ingin mencetak data berdasarkan riwayat
     else:
         lengtharray = findLongest(data, True)
         header = headerhis
         finish = 4
 
+    # mengubah tiap elemen dalam data menjadi string
     str_data = []
     for dataline in data:
         str_element = []
@@ -335,12 +375,14 @@ def neatList(data, stock=True, his=False):
             str_element += [str(dataline[i])]
         str_data += [str_element]
 
+    # menggabungkannya dengan header
     combined = [header]
     combined += str_data
 
-    listDiv(lengtharray, finish, his, stock)
-    listDiv(lengtharray, finish, his, stock, False)
+    listDiv(lengtharray, finish, his, stock)            # mencetak judul
+    listDiv(lengtharray, finish, his, stock, False)     # mencetak pembatas
 
+    # mencetak list
     counter = 0
     for datalines in combined:
         base = "| "
