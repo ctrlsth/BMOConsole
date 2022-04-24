@@ -35,9 +35,9 @@ def cipher(password, encrypt=True):
         return decryptedpwd
 
 
-print("Encrypt: neelyak")
-encrypted = cipher("neelyak")
-print(encrypted)
-print()
-print("Decrypt :", encrypted)
-print(cipher(encrypted, False))
+# print("Encrypt: neelyak")
+# encrypted = cipher("neelyak")
+# print(encrypted)
+# print()
+# print("Decrypt :", encrypted)
+# print(cipher(encrypted, False))
