@@ -34,7 +34,7 @@ def showriwayat(datahis, datagame, user_id):
             temphis = []
     
     if riw == []:
-        print("Maaf, kamu belum membeli game. Ketik perintah buy_game untuk beli.")
+        print("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli.")
     else:
         print("Daftar riwayat : ")
         r.neatList(riw, False, True)
