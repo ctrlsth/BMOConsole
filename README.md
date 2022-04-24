@@ -1,7 +1,6 @@
 # BMOConsole
+## *Note: Semua File Final berada dalam folder Final*
 Tugas Besar IF1210 Dasar Pemrograman 2022 Kelas 01 Kelompok 13
-
-*Note: Semua File Final berada dalam folder Final
 
 Oleh:
 - Hans Stephano Edbert N - 16521001 
