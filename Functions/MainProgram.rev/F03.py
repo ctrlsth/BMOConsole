@@ -1,5 +1,6 @@
 # F03 - Login
 import rCSV as r
+import B01
 
 def login(datauser) :
     
@@ -9,7 +10,7 @@ def login(datauser) :
     loginData = []
 
     for i in datauser :
-        if (in_username == i[1] and in_password == i[3]) :
+        if (in_username == i[1] and in_password == B01.cipher(i[3], False)): # <-- DISINI PERUBAHANNYA
             nama = i[2]
             loginData += i
             loginValid = True
@@ -43,5 +44,5 @@ def login(datauser) :
 
 # loginData = [2, "hanhan","Hans", "snah", "user", 20000]
 
-# manggil fungsi
+# # manggil fungsi
 # login(datauser)
